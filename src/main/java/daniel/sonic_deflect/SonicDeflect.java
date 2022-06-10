@@ -2,7 +2,6 @@ package daniel.sonic_deflect;
 
 import daniel.sonic_deflect.enchantment.SonicDeflectEnchantment;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;

@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import daniel.sonic_deflect.SonicDeflect;
 import net.fabricmc.fabric.api.gametest.v1.FabricGameTest;
 import net.minecraft.block.Blocks;
-import net.minecraft.class_7396;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EntityType;
@@ -20,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.test.GameTest;
 import net.minecraft.test.TestContext;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
@@ -29,7 +28,7 @@ import net.minecraft.world.event.GameEvent;
 public class SonicDeflectionTestSuite implements FabricGameTest {
 
 
-    @GameTest(structureName = "sonic_deflect:warden_enclosure", tickLimit = 323)
+    @GameTest(templateName = "sonic_deflect:warden_enclosure", tickLimit = 323)
     public void testDeflectionSuite(TestContext context) {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
@@ -54,7 +53,7 @@ public class SonicDeflectionTestSuite implements FabricGameTest {
         WardenEntity warden = new WardenEntity(EntityType.WARDEN, context.getWorld());
         Vec3d absPos = context.getAbsolute(new Vec3d(6, 2, 5));
         warden.setPos(absPos.x, absPos.y, absPos.z);
-        warden.setCustomName(new LiteralText("Subject"));
+        warden.setCustomName(Text.literal("Subject"));
         warden.initialize(context.getWorld(), context.getWorld().getLocalDifficulty(BlockPos.ORIGIN), SpawnReason.SPAWN_EGG, null, null);
         context.getWorld().spawnEntity(warden);
 

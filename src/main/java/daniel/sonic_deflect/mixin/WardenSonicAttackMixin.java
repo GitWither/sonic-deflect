@@ -3,10 +3,10 @@ package daniel.sonic_deflect.mixin;
 
 import daniel.sonic_deflect.SonicDeflect;
 import net.minecraft.block.Blocks;
-import net.minecraft.class_7396;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.brain.task.SonicBoomTask;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.WardenEntity;
@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-@Mixin(class_7396.class)
+@Mixin(SonicBoomTask.class)
 public class WardenSonicAttackMixin {
 
     //injecting into lambdas be like
@@ -43,8 +43,9 @@ public class WardenSonicAttackMixin {
                 server.spawnParticles(ParticleTypes.SONIC_BOOM, particlePos.x, particlePos.y, particlePos.z, 1, 0.0, 0.0, 0.0, 0.0);
 
                 //meh
-                List<Entity> entitiesToBeDamaged = server.getOtherEntities(null, Box.of(particlePos, 1, 1, 1));
+                List<Entity> entitiesToBeDamaged = server.getOtherEntities(damagedEntity, Box.of(particlePos, 1, 1, 1));
                 for (Entity entity : entitiesToBeDamaged) {
+
                     if (entity instanceof LivingEntity) {
                         entity.damage(DamageSource.mob(warden), (float) warden.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) - 0.5f * i);
                     }
