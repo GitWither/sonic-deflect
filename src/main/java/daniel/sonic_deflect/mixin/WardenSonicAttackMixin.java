@@ -29,7 +29,7 @@ public class WardenSonicAttackMixin {
 
     //injecting into lambdas be like
     @Inject(method = "method_43265(Lnet/minecraft/entity/mob/WardenEntity;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/LivingEntity;)V", at = @At("HEAD"))
-    private static void injectIntoAttack(WardenEntity warden, ServerWorld server, LivingEntity damagedEntity, CallbackInfo ci) {
+    private static void sonicDeflect$injectIntoAttack(WardenEntity warden, ServerWorld server, LivingEntity damagedEntity, CallbackInfo ci) {
         if (SonicDeflect.entityHasSonicDeflect(damagedEntity)) {
             Vec3d targetLookingVector = damagedEntity.getRotationVector();
 
@@ -59,7 +59,7 @@ public class WardenSonicAttackMixin {
             method = "method_43265(Lnet/minecraft/entity/mob/WardenEntity;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/LivingEntity;)V",
             at = @At(value = "INVOKE", target = "net/minecraft/entity/LivingEntity.addVelocity(DDD)V", shift = At.Shift.BEFORE)
     )
-    private static void cancelKnockback(WardenEntity wardenEntity, ServerWorld serverWorld, LivingEntity livingEntity, CallbackInfo ci) {
+    private static void sonicDeflect$cancelKnockback(WardenEntity wardenEntity, ServerWorld serverWorld, LivingEntity livingEntity, CallbackInfo ci) {
         if (SonicDeflect.entityHasSonicDeflect(livingEntity)) {
             ci.cancel();
         }
