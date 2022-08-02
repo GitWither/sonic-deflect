@@ -1,3 +1,4 @@
 {
-  "enchantment.sonic_deflect.sonic_deflect": "Sonic Deflect"
+  "enchantment.sonic_deflect.sonic_deflect": "Sonic Deflect",
+  "enchantment.sonic_deflect.sonic_deflect.desc": "Reflects sonic beam attacks in the direction you are looking."
 }
