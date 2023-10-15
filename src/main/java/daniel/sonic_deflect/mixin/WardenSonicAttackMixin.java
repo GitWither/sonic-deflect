@@ -9,6 +9,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.task.SonicBoomTask;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageSources;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.mob.WardenEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -47,7 +49,7 @@ public class WardenSonicAttackMixin {
                 for (Entity entity : entitiesToBeDamaged) {
 
                     if (entity instanceof LivingEntity) {
-                        entity.damage(DamageSource.mob(warden), (float) warden.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) - 0.5f * i);
+                        entity.damage(warden.getDamageSources().mobAttack(warden), (float) warden.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) - 0.5f * i);
                     }
                 }
             }
